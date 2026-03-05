@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-int SIZE = 5;
+int SIZE = 4;
 
 class Color {
     int red_val;
@@ -20,8 +20,8 @@ class Color {
     //default, parameter, and partial constructors
     Color() {red_val = 0, green_val = 0, blue_val = 0;}
     Color(int r, int g, int b) {red_val = r, green_val = g, blue_val = b;}
-    Color(int r) {red_val = r, green_val = 0, blue_val = 0;}
     Color(int r, int g) {red_val = r, green_val = g, blue_val = 0;}
+    Color(int r) {red_val = r, green_val = 0, blue_val = 0;}
     //getters and setters
     int getRedVal() const {return this->red_val;}
     int getGreenVal() const {return this->green_val;}
@@ -68,12 +68,24 @@ int main() {
         return 1;
     }
     //output values using color object's print() method
-    cout << "Outputting color objects: " << endl;
+    cout << "Outputting color objects read from file: " << endl;
     for (Color c : colors) {
         static int i = 0;
         cout << "Color #" << i + 1 << ": " << colorNames[i] << endl;
         c.print();
         i++;
     }
+    cout << "Creating and outputting colors made from constructors:" << endl;
+    Color black;
+    black.print();
+
+    Color white(255, 255, 255);
+    white.print();
+    
+    Color yellow(255, 255);
+    yellow.print();
+
+    Color red(255);
+    red.print();
     return 0;
 }

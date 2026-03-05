@@ -18,6 +18,15 @@ class Color {
     int blue_val;
 
     public:
+    //default, parameter, and partial constructors
+    //default constructor creates color named black with all values
+    //initialized to 0
+    Color() {name = "black", red_val = 0, green_val = 0, blue_val = 0;}
+    //parameter constructor
+    Color(string str, int r, int g, int b) {
+        name = str, red_val = r, green_val = g, blue_val = b;}
+    //partial constructors
+    Color(string = "")
     //getters and setters
     string getName() const {return this->name;}
     int getRedVal() const {return this->red_val;}

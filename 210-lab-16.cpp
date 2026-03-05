@@ -12,33 +12,25 @@ using namespace std;
 int SIZE = 5;
 
 class Color {
-    string name; //added name member variable
     int red_val;
     int green_val;
     int blue_val;
 
     public:
     //default, parameter, and partial constructors
-    //default constructor creates color named black with all values
-    //initialized to 0
-    Color() {name = "black", red_val = 0, green_val = 0, blue_val = 0;}
-    //parameter constructor
-    Color(string str, int r, int g, int b) {
-        name = str, red_val = r, green_val = g, blue_val = b;}
-    //partial constructors
-    Color(string = "")
+    Color() {red_val = 0, green_val = 0, blue_val = 0;}
+    Color(int r, int g, int b) {red_val = r, green_val = g, blue_val = b;}
+    Color(int r) {red_val = r, green_val = 0, blue_val = 0;}
+    Color(int r, int g) {red_val = r, green_val = g, blue_val = 0;}
     //getters and setters
-    string getName() const {return this->name;}
     int getRedVal() const {return this->red_val;}
     int getGreenVal() const {return this->green_val;}
     int getBlueVal() const {return this->blue_val;}
-    void getName(string str) {this->name = str;}
     void setRedVal(int val) {this->red_val = val;}
     void setGreenVal(int val) {this->green_val = val;}
     void setBlueVal(int val) {this->blue_val = val;}
     //member print() method
     void print() {
-        cout << "\tName: " << name << endl;
         cout << "\tRed Value: " << red_val << endl;
         cout << "\tGreen Value: " << green_val << endl;
         cout << "\tBlue Value: " << blue_val << endl;

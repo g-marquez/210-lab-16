@@ -5,7 +5,7 @@
 //*****************************************************************************
 
 #include <iostream>
-#include <fstream>
+#include <vector> 
 #include <string>
 using namespace std;
 
@@ -39,53 +39,28 @@ class Color {
 };
 
 int main() {
-    //create array of color objects using file input
-    Color colors[SIZE];
+    //create vector of color objects
+    vector<Color> colors;
     //color names to ouput at the end
-    string colorNames[SIZE] = {"Grey", "Salmon", "Beige", "Teal", "Maroon"};
-    ifstream fin("colors.txt");
-    if (fin.good( )) {
-        string colorName;
-        int red, green, blue;
-        int index = 0;
+    string colorNames[SIZE] = {"Black", "White", "Yellow", "Red"};
+    
+    //create and add color objects to vector
+    Color black;
+    colors.push_back(black);
+    Color white(255, 255, 255);
+    colors.push_back(white);
+    Color yellow(255, 255);
+    colors.push_back(yellow);
+    Color red(255);
+    colors.push_back(red);
 
-        while (fin >> red) {
-            fin >> green;
-            fin >> blue;
-            
-            //create temp color object, populate, and add it to array
-            Color temp;
-            temp.setRedVal(red);
-            temp.setGreenVal(green);
-            temp.setBlueVal(blue);
-            colors[index] = temp;
-            index++;
-        }
-        fin.close( );
-    }
-    else {
-        cout << "ERROR! Please verify file name/directory and restart program.";
-        return 1;
-    }
     //output values using color object's print() method
-    cout << "Outputting color objects read from file: " << endl;
+    cout << "Outputting color objects made using construtors: " << endl;
     for (Color c : colors) {
         static int i = 0;
         cout << "Color #" << i + 1 << ": " << colorNames[i] << endl;
         c.print();
         i++;
     }
-    cout << "Creating and outputting colors made from constructors:" << endl;
-    Color black;
-    black.print();
-
-    Color white(255, 255, 255);
-    white.print();
-    
-    Color yellow(255, 255);
-    yellow.print();
-
-    Color red(255);
-    red.print();
     return 0;
 }
